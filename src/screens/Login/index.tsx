@@ -24,10 +24,7 @@ export const Login = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.viewLogoContainer}>
-        <Image
-          tintColor={'#000'}
-          source={require('../../assets/icons/Icon.png')}
-        />
+        <Image source={require('../../assets/icons/Icon.png')} />
       </View>
 
       <View style={styles.viewInputs}>
