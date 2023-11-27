@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import React, {useState, useContext} from 'react';
 import {
   View,
@@ -11,6 +12,7 @@ import {
 
 import AuthContext from '../../contexts/auth';
 export const Login = () => {
+  const {navigate} = useNavigation();
   const {signed, signIn} = useContext(AuthContext);
 
   const [name, setName] = useState('');
@@ -19,6 +21,10 @@ export const Login = () => {
   async function handleSignIn() {
     await signIn();
     console.log('respons', signed);
+  }
+
+  async function handleRegister() {
+    navigate('SignUp');
   }
 
   return (
@@ -51,6 +57,10 @@ export const Login = () => {
         <Pressable onPress={handleSignIn} style={styles.buttonSignInView}>
           <Text style={styles.textButtonSignIn}>Entrar</Text>
         </Pressable>
+
+        <Pressable onPress={handleRegister} style={styles.buttonRegister}>
+          <Text style={styles.textButtonSignIn}>Criar uma conta </Text>
+        </Pressable>
       </View>
     </SafeAreaView>
   );
@@ -78,7 +88,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     height: '60%',
-
     borderTopLeftRadius: 8,
     borderTopEndRadius: 8,
     backgroundColor: '#FFFFFF',
@@ -103,7 +112,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 20,
-    marginBottom: 24,
   },
 
   textButtonSignIn: {
@@ -117,5 +125,16 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 20,
     marginBottom: 45,
+  },
+
+  buttonRegister: {
+    backgroundColor: '#00B8C4',
+    width: 350,
+    height: 48,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 20,
+    marginBottom: 24,
   },
 });
