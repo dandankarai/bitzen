@@ -16,20 +16,29 @@ import {
 import {useNavigation} from '@react-navigation/native';
 
 export const SignUp = () => {
-  const {signed, signIn} = useContext(AuthContext);
+  const {signed, signIn, register} = useContext(AuthContext);
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [document, setDocument] = useState('');
+
   const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [checked, setChecked] = useState(false);
 
   const {navigate} = useNavigation();
-
-  async function handleSignIn() {
-    await signIn();
-    console.log('respons', signed);
+  async function handleRegister() {
+    if (
+      name === '' &&
+      email === '' &&
+      password === '' &&
+      document === '' &&
+      phoneNumber === ''
+    ) {
+      return console.log('Preencha todos os campos');
+    }
+    await register();
   }
 
   function handleLogin() {
@@ -54,6 +63,8 @@ export const SignUp = () => {
           placeholder="CPF *"
           value={document}
           onChange={e => setDocument(e.target.value)}
+          maxLength={11}
+          keyboardType={'numeric'}
         />
 
         <TextInput
@@ -78,6 +89,7 @@ export const SignUp = () => {
           placeholder="Senha *"
           value={password}
           onChange={e => setPassword(e.target.value)}
+          secureTextEntry={true}
         />
 
         <TextInput
@@ -86,10 +98,11 @@ export const SignUp = () => {
           placeholder="Confirmar senha *"
           value={confirmPassword}
           onChange={e => setConfirmPassword(e.target.value)}
+          secureTextEntry={true}
         />
       </View>
 
-      <Pressable onPress={handleSignIn} style={styles.buttonCreateAccount}>
+      <Pressable onPress={handleRegister} style={styles.buttonCreateAccount}>
         <Text style={styles.textButtonCreateAccount}>Criar conta</Text>
       </Pressable>
 

@@ -1,6 +1,5 @@
-import {BASE_URL} from '@env';
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: BASE_URL,
+  baseURL: 'https://api.bitzen-pet.homologacao.bitzenwebsites.net/api/',
 });
