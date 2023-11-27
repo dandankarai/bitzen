@@ -1,18 +1,7 @@
-import AsyncStorage from '@react-native-community/async-storage';
-import React, {useContext} from 'react';
-import {Button, View, Text, StyleSheet, Image, Pressable} from 'react-native';
-import {ScrollView, TextInput} from 'react-native-gesture-handler';
-import {AuthContext} from '../../contexts';
-import SwiperComponent from '../../components/Swiper';
-import {ro} from 'date-fns/locale';
-import {useNavigation} from '@react-navigation/native';
+import React from 'react';
+import {View, Text, StyleSheet, Image} from 'react-native';
+
 export const DetailAccount = () => {
-  const {signOut} = useContext(AuthContext);
-
-  function handleSignOut() {
-    signOut();
-  }
-
   return (
     <View style={styles.container}>
       <View style={styles.viewImage}>
@@ -48,9 +37,6 @@ const styles = StyleSheet.create({
   viewContent: {
     flexDirection: 'column',
     width: '100%',
-    // backgroundColor: 'pink',
-    // alignItems: 'center',
-    // justifyContent: 'space-evenly',
   },
 
   rowInfos: {

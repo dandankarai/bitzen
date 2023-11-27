@@ -1,16 +1,9 @@
-import AsyncStorage from '@react-native-community/async-storage';
-import React, {useContext} from 'react';
-import {Button, View, Text, StyleSheet, Image} from 'react-native';
+import React from 'react';
+import {View, Text, StyleSheet} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
-import {AuthContext} from '../../contexts';
 import SwiperComponent from '../../components/Swiper';
-import {ro} from 'date-fns/locale';
-export default function DetailPet(props: any) {
-  // const {signOut} = useContext(AuthContext);
 
-  // function handleSignOut() {
-  //   signOut();
-  // }
+export default function DetailPet(props: any) {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.swiperContent}>

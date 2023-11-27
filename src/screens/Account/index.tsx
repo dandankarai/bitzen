@@ -1,10 +1,6 @@
-import AsyncStorage from '@react-native-community/async-storage';
 import React, {useContext} from 'react';
-import {Button, View, Text, StyleSheet, Image, Pressable} from 'react-native';
-import {ScrollView, TextInput} from 'react-native-gesture-handler';
+import {View, Text, StyleSheet, Image, Pressable} from 'react-native';
 import {AuthContext} from '../../contexts';
-import SwiperComponent from '../../components/Swiper';
-import {ro} from 'date-fns/locale';
 import {useNavigation} from '@react-navigation/native';
 export const Account = (props: any) => {
   const {navigate} = useNavigation();
@@ -71,12 +67,12 @@ const styles = StyleSheet.create({
   },
 
   viewButtonInfos: {
-    // backgroundColor: 'red',
     paddingHorizontal: 20,
     borderRadius: 8,
     height: '100%',
     paddingTop: 50,
   },
+
   pressableAccount: {
     flexDirection: 'row',
     alignItems: 'center',

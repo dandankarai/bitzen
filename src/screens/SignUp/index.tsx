@@ -1,22 +1,19 @@
 import React, {useState, useContext} from 'react';
 import AuthContext from '../../contexts/auth';
-import {signIn} from '../../services';
 
 import {
   View,
   Text,
-  Platform,
   SafeAreaView,
   StyleSheet,
   TextInput,
-  Button,
   TouchableOpacity,
   Pressable,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 export const SignUp = () => {
-  const {signed, signIn, register} = useContext(AuthContext);
+  const {register} = useContext(AuthContext);
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -25,7 +22,6 @@ export const SignUp = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [checked, setChecked] = useState(false);
 
   const {navigate} = useNavigation();
   async function handleRegister() {

@@ -1,13 +1,14 @@
-import AsyncStorage from '@react-native-community/async-storage';
-import React, {useContext, useState} from 'react';
-import {Button, View, Text, StyleSheet, Image, Pressable} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, StyleSheet, Image, Pressable} from 'react-native';
 import {ScrollView, TextInput} from 'react-native-gesture-handler';
-import {AuthContext} from '../../contexts';
-import SwiperComponent from '../../components/Swiper';
+
 import DatePicker from 'react-native-date-picker';
-export const NewPet = (props: any) => {
+export const NewPet = () => {
   const [date, setDate] = useState(new Date());
   const [open, setOpen] = useState(false);
+  const [color, setColor] = useState();
+  const [name, setName] = useState();
+  const [aboutPet, setAboutPet] = useState();
 
   const formatteDate = `${date.getDate()}/${
     date.getMonth() + 1
@@ -25,8 +26,8 @@ export const NewPet = (props: any) => {
             style={styles.inputsRegister}
             placeholderTextColor={'#8C8C8C'}
             placeholder="Nome"
-            // value={name}
-            // onChange={e => setName(e.target.value)}
+            value={name}
+            onChange={e => setName(e.target.value)}
           />
         </View>
         <View style={styles.viewInput}>
@@ -34,8 +35,8 @@ export const NewPet = (props: any) => {
             style={styles.inputsRegister}
             placeholderTextColor={'#8C8C8C'}
             placeholder="Cor"
-            // value={name}
-            // onChange={e => setName(e.target.value)}
+            value={color}
+            onChange={e => setColor(e.target.value)}
           />
         </View>
 
@@ -47,7 +48,7 @@ export const NewPet = (props: any) => {
             value={formatteDate}
             onChange={e => setDate(e.target.value)}
           />
-          {/* onPress={() => setOpen(true)} */}
+
           <Pressable onPress={() => setOpen(true)}>
             <Image source={require('../../assets/icons/calendar.png')} />
           </Pressable>
@@ -64,7 +65,6 @@ export const NewPet = (props: any) => {
               setOpen(false);
             }}
           />
-          {/* <Text>daniel</Text> */}
         </View>
 
         <View style={styles.viewInput}>
@@ -72,8 +72,8 @@ export const NewPet = (props: any) => {
             style={styles.inputAbout}
             placeholderTextColor={'#8C8C8C'}
             placeholder="Sobre o pet"
-            // value={name}
-            // onChange={e => setName(e.target.value)}
+            value={aboutPet}
+            onChange={e => setAboutPet(e.target.value)}
           />
         </View>
       </View>
@@ -108,8 +108,6 @@ const styles = StyleSheet.create({
     height: 48,
   },
 
-  swiperContent: {flexDirection: 'row', height: 350, width: '100%'},
-
   inputsRegister: {
     width: 350,
     height: 48,
@@ -135,7 +133,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     marginHorizontal: 20,
-    // marginVertical: 20,
   },
 
   viewInputCalendar: {
@@ -152,44 +149,12 @@ const styles = StyleSheet.create({
     height: 48,
   },
 
-  inputCalendar: {},
-
-  infoTextLeftSide: {
-    color: '#8C8C8C',
-    fontSize: 16,
-  },
-
-  infoTextRightSide: {
-    color: '#000',
-    fontSize: 16,
-  },
-
-  descriptionPet: {
-    color: '#595959',
-    fontSize: 18,
-    lineHeight: 24,
-  },
-
-  aboutTitle: {
-    marginHorizontal: 20,
-    color: '#8C8C8C',
-    fontSize: 20,
-    marginTop: 20,
-  },
-
   aboutPet: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
     marginHorizontal: 20,
     marginVertical: 20,
-  },
-
-  viewAbout: {
-    borderWidth: 1,
-    borderColor: '#E6E6E6',
-    borderRadius: 8,
-    padding: 20,
   },
 
   containerTextTitle: {
@@ -212,25 +177,5 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#E6E6E6',
     borderRadius: 8,
-  },
-
-  textContentView: {
-    borderWidth: 1,
-    borderColor: '#E6E6E6',
-    backgroundColor: '##E6E6E6',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    height: '90%',
-    padding: 20,
-  },
-
-  textContentTextTitle: {
-    fontSize: 18,
-    color: '#8C8C8C',
-  },
-
-  textContentName: {
-    color: '#000',
-    fontSize: 18,
   },
 });

@@ -1,17 +1,11 @@
-import AsyncStorage from '@react-native-community/async-storage';
 import React, {useContext} from 'react';
-import {Button, View, Text, StyleSheet, FlatList} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import {ScrollView, TextInput} from 'react-native-gesture-handler';
 import {AuthContext} from '../../contexts';
 import New from '../../components/New';
 import {useNavigation} from '@react-navigation/native';
 export default function Home() {
   const navigation = useNavigation();
-  const {signOut} = useContext(AuthContext);
-
-  function handleSignOut() {
-    signOut();
-  }
   return (
     <ScrollView>
       <View style={styles.header}>
