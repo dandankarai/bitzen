@@ -52,6 +52,7 @@ export const Login = () => {
           placeholder="Senha"
           value={password}
           onChange={e => setPassword(e.target.value)}
+          secureTextEntry={true}
         />
 
         <Pressable onPress={handleSignIn} style={styles.buttonSignInView}>
