@@ -8,6 +8,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Account} from '../screens/Account';
 
 import {Paw} from '../assets/icons/pawTabBar.png';
+import {DetailAccount} from '../screens/DetailAccount';
 
 const AppStack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -77,7 +78,8 @@ const AppRoutes = () => {
 
           headerRight: () => (
             <TouchableOpacity onPress={() => navigate('NewPet')}>
-              <Text>Novo pet</Text>
+              <Image source={require('../assets/icons/plus.png')} />
+              {/* <Text>Novo pet</Text> */}
             </TouchableOpacity>
           ),
         }}
@@ -100,6 +102,12 @@ const AppRoutes = () => {
           headerBackTitleVisible: false,
           headerTitle: '',
         }}
+      />
+
+      <AppStack.Screen
+        name="DetailAccount"
+        options={{headerTitle: 'Meus Dados'}}
+        component={DetailAccount}
       />
     </AppStack.Navigator>
   );

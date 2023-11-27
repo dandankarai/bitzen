@@ -5,18 +5,48 @@ import {ScrollView, TextInput} from 'react-native-gesture-handler';
 import {AuthContext} from '../../contexts';
 import SwiperComponent from '../../components/Swiper';
 import {ro} from 'date-fns/locale';
+import {useNavigation} from '@react-navigation/native';
 export const Account = (props: any) => {
+  const {navigate} = useNavigation();
   const {signOut} = useContext(AuthContext);
 
   function handleSignOut() {
     signOut();
   }
+
+  function handleDetailAccount() {
+    navigate('DetailAccount');
+  }
+
   return (
     <View style={styles.container}>
-      <Text>Página de conta</Text>
-      <Pressable onPress={handleSignOut}>
-        <Text>sair</Text>
-      </Pressable>
+      <View style={styles.viewAvatar}>
+        <Image source={require('../../assets/icons/Avatar.png')} />
+        <View style={styles.viewTextNameAndCity}>
+          <Text>Ana Maria</Text>
+          <Text>Curitiba, PR</Text>
+        </View>
+      </View>
+
+      <View style={styles.viewButtonInfos}>
+        <Pressable
+          onPress={handleDetailAccount}
+          style={styles.pressableAccount}>
+          <Image
+            source={require('../../assets/icons/profileAccount.png')}
+            tintColor={'#183E4B'}
+          />
+          <Text style={styles.pressableAccountText}>Meus dados</Text>
+        </Pressable>
+
+        <Pressable onPress={handleSignOut} style={styles.pressableAccount}>
+          <Image
+            source={require('../../assets/icons/logOut.png')}
+            tintColor={'#183E4B'}
+          />
+          <Text style={styles.pressableAccountText}>Sair do aplicativo</Text>
+        </Pressable>
+      </View>
     </View>
   );
 };
@@ -27,103 +57,35 @@ const styles = StyleSheet.create({
     backgroundColor: '#F9F9F9',
   },
 
-  swiperContent: {flexDirection: 'row', height: 350, width: '100%'},
-  inputsRegister: {
-    width: 350,
-    height: 48,
-    borderWidth: 1,
-    borderRadius: 8,
-    borderColor: '#CCCCCC',
-    paddingLeft: 18,
-    margin: 12,
-  },
-  insideNameAndTitle: {
-    display: 'flex',
+  viewAvatar: {
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    gap: 16,
     marginHorizontal: 20,
     marginVertical: 20,
   },
 
-  infoTextLeftSide: {
-    color: '#8C8C8C',
-    fontSize: 16,
+  viewTextNameAndCity: {
+    gap: 6,
   },
 
-  infoTextRightSide: {
-    color: '#000',
-    fontSize: 16,
-  },
-
-  descriptionPet: {
-    color: '#595959',
-    fontSize: 18,
-    lineHeight: 24,
-  },
-
-  aboutTitle: {
-    marginHorizontal: 20,
-    color: '#8C8C8C',
-    fontSize: 20,
-    marginTop: 20,
-  },
-
-  aboutPet: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    marginHorizontal: 20,
-    marginVertical: 20,
-  },
-
-  viewAbout: {
-    borderWidth: 1,
-    borderColor: '#E6E6E6',
+  viewButtonInfos: {
+    // backgroundColor: 'red',
+    paddingHorizontal: 20,
     borderRadius: 8,
-    padding: 20,
+    height: '100%',
+    paddingTop: 50,
+  },
+  pressableAccount: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 16,
+    marginVertical: 16,
   },
 
-  containerTextTitle: {
-    width: '90%',
-    marginTop: 20,
-    marginBottom: 20,
-
-    marginHorizontal: 20,
-  },
-
-  textInfoTitle: {
+  pressableAccountText: {
     color: '#404040',
-    fontSize: 22,
-    fontWeight: '600',
-    lineHeight: 24,
-  },
-
-  viewContentContainer: {
-    // height: '90%',
-    // flexDirection: 'column',
-    marginHorizontal: 20,
-    borderWidth: 1,
-    borderColor: '#E6E6E6',
-    borderRadius: 8,
-  },
-
-  textContentView: {
-    borderWidth: 1,
-    borderColor: '#E6E6E6',
-    backgroundColor: '##E6E6E6',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    height: '90%',
-    padding: 20,
-  },
-
-  textContentTextTitle: {
-    fontSize: 18,
-    color: '#8C8C8C',
-  },
-
-  textContentName: {
-    color: '#000',
-    fontSize: 18,
+    fontSize: 16,
   },
 });
