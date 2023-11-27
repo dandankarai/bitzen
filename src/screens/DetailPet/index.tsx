@@ -109,7 +109,6 @@ const styles = StyleSheet.create({
     width: '90%',
     marginTop: 20,
     marginBottom: 20,
-
     marginHorizontal: 20,
   },
 
@@ -121,31 +120,9 @@ const styles = StyleSheet.create({
   },
 
   viewContentContainer: {
-    // height: '90%',
-    // flexDirection: 'column',
     marginHorizontal: 20,
     borderWidth: 1,
     borderColor: '#E6E6E6',
     borderRadius: 8,
-  },
-
-  textContentView: {
-    borderWidth: 1,
-    borderColor: '#E6E6E6',
-    backgroundColor: '##E6E6E6',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    height: '90%',
-    padding: 20,
-  },
-
-  textContentTextTitle: {
-    fontSize: 18,
-    color: '#8C8C8C',
-  },
-
-  textContentName: {
-    color: '#000',
-    fontSize: 18,
   },
 });
